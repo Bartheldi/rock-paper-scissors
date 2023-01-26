@@ -109,18 +109,28 @@
 
 }
 
-
 .computer-side .rock {
-    display: none;
+    display: visible;
 }
 
 .computer-side .scissors {
-    display: none;
+    display: visible;
 }
 
 .computer-side .paper {
-    /* display: none; */
-    border: 1;
+    display: visible;
+}
+
+.computer-side .rock-none {
+    display: none;
+}
+
+.computer-side .scissors-none {
+    display: none;
+}
+
+.computer-side .paper-none {
+     display: none; 
 }
 
 
