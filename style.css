@@ -5,8 +5,6 @@
 }
 
 
-
-
 #container {
     display: grid;
     width: 100%;
@@ -23,9 +21,16 @@
     grid-template-columns: 39% 19% 39%;
 }
 
+
 .header {
     grid-area: header;
 }
+
+.header h1 {
+    text-align: center;
+    margin-top: 2%;
+}
+
 
 .player-side {
     grid-area: player;
@@ -35,6 +40,7 @@
     align-items: center;
     margin-left: 5%;
 }
+
 
 .player-side-text {
     grid-area: player-text;
@@ -53,47 +59,180 @@
 
 }
 
-.player-side-paper {
-    border: 5px solid rgb(55, 130, 236);
+
+.playerOptionMove {
+    animation: playerOptionMove 3s linear;
 }
 
-.player-side-rock {
-    border: 5px solid rgb(55, 130, 236);
+
+.playerOptionNone {
+    animation: playerOptionNone 3s linear;
 }
 
-.player-side-scissors {
-    border: 5px solid rgb(55, 130, 236);
+
+@keyframes playerOptionNone {
+    0% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
-.player-side-paper-none {
-    opacity: 0;
-    transition: opacity 0.8s linear 0.5s;
+
+@keyframes playerOptionMove {
+    0% {
+        opacity: 1;
+        border: 5px solid rgb(55, 130, 236);
+    }
+
+    25% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
-.player-side-rock-none {
-    opacity: 0;
-    transition: opacity 0.8s linear 0.5s;
-}
 
-.player-side-scissors-none {
-    opacity: 0;
-    transition: opacity 0.8s linear 0.5s;
+@keyframes newGame {
+    0% {
+        color: black;
+    }
+
+    50% {
+        color: #fff;
+        font-size: 18px;
+    }
+
+
+    100% {
+        color: #fff;
+        font-size: 16px;
+    }
 }
 
 
 .menu {
     grid-area: menu;
-    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    background-color: rgb(255, 255, 255);
 }
+
+.menu .newGame {
+    position: relative;
+    top: 25%;
+    left: 49%;
+    padding-top: 2%;
+    background-color: orange;
+    font-size: 16px;
+    font-weight: bold;
+    width: 45%;
+    height: 80px;
+    text-align: center;
+    border-top-left-radius: 25%;
+    border-bottom-right-radius: 25%;
+    border-top-right-radius: 7%;
+    border-bottom-left-radius: 7%;
+    border: 0;
+    outline: none;
+}
+
+.menu .resetCalc {
+    position: relative;
+    top: 24%;
+    left: 6%;
+    padding-top: 2%;
+    background-color: orange;
+    font-size: 16px;
+    font-weight: bold;
+    width: 45%;
+    height: 80px;
+    text-align: center;
+    border-top-left-radius: 25%;
+    border-bottom-right-radius: 25%;
+    border-top-right-radius: 7%;
+    border-bottom-left-radius: 7%;
+    border: 0;
+    outline: none;
+}
+
+.menu .newGame:hover,
+.resetCalc:hover {
+    cursor: pointer;
+    animation: newGame 1.5s both;
+}
+
+
+
+.menu .player-score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8%;
+    width: 100%;
+    color: blue;
+}
+
+.menu .computer-score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8%;
+    width: 100%;
+    color: red;
+}
+
+.menu .draw {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8%;
+    width: 100%;
+    color: rgb(179, 125, 26);
+}
+
+.menu-text {
+    grid-area: menu-text;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .computer-side {
     grid-area: computer;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: orange;
+    background-color: #fff;
     margin-right: 5%;
 }
+
 
 .computer-side-text {
     grid-area: computer-text;
@@ -102,6 +241,7 @@
     align-items: center;
 }
 
+
 .computer-side img {
     width: 50%;
     height: 60%;
@@ -109,28 +249,14 @@
 
 }
 
-.computer-side .rock {
+
+.computerDisplay {
     display: visible;
 }
 
-.computer-side .scissors {
-    display: visible;
-}
 
-.computer-side .paper {
-    display: visible;
-}
-
-.computer-side .rock-none {
+.computerDisplayNone {
     display: none;
-}
-
-.computer-side .scissors-none {
-    display: none;
-}
-
-.computer-side .paper-none {
-     display: none; 
 }
 
 

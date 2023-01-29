@@ -26,87 +26,156 @@ function shuffleOptions() {
 
     //paper
     setTimeout(() => {
-      computer[1].classList.remove("rock")
-      computer[1].classList.add("rock-none")
-      computer[2].classList.remove("scissors")
-      computer[2].classList.add("scissors-none")
-      computer[0].classList.remove("paper-none")
-      computer[0].classList.add("paper")
-      console.log(computer[0])
+      computer["rock"].classList.remove("computerDisplay")
+      computer["rock"].classList.add("computerDisplayNone")
+      computer["scissors"].classList.remove("computerDisplay")
+      computer["scissors"].classList.add("computerDisplayNone")
+      computer["paper"].classList.remove("computerDisplayNone")
+      computer["paper"].classList.add("computerDisplay")
     }, 150)
 
 
     // rock
     setTimeout(() => {
-      computer[0].classList.remove("paper")
-      computer[0].classList.add("paper-none")
-      computer[2].classList.remove("scissors")
-      computer[2].classList.add("scissors-none")
-      computer[1].classList.remove("rock-none")
-      computer[1].classList.add("rock")
-      console.log(computer[1])
+      computer["paper"].classList.remove("computerDisplay")
+      computer["paper"].classList.add("computerDisplayNone")
+      computer["scissors"].classList.remove("computerDisplay")
+      computer["scissors"].classList.add("computerDisplayNone")
+      computer["rock"].classList.remove("computerDisplayNone")
+      computer["rock"].classList.add("computerDisplay")
     }, 300)
 
     //scissors
     setTimeout(() => {
-      computer[0].classList.remove("paper")
-      computer[0].classList.add("paper-none")
-      computer[1].classList.remove("rock")
-      computer[1].classList.add("rock-none")
-      computer[2].classList.remove("scissors-none")
-      computer[2].classList.add("scissors")
-      console.log(computer[2])
+      computer["paper"].classList.remove("computerDisplay")
+      computer["paper"].classList.add("computerDisplayNone")
+      computer["rock"].classList.remove("computerDisplay")
+      computer["rock"].classList.add("computerDisplayNone")
+      computer["scissors"].classList.remove("computerDisplayNone")
+      computer["scissors"].classList.add("computerDisplay")
     }, 450)
 
-
-
     endShuffle++
-    console.log(endShuffle)
     setTimeout(shuffleOptions, 600)
   }
 
-  computerWinOption()
 }
 
 
 
 function computerWinOption() {
-
-  console.log(getRandom0To2())
+  let randomNumber
   randomNumber = getRandom0To2()
 
   //paper
   if (randomNumber === 0) {
-    computer[1].classList.remove("rock")
-    computer[1].classList.add("rock-none")
-    computer[2].classList.remove("scissors")
-    computer[2].classList.add("scissors-none")
-    computer[0].classList.remove("paper-none")
-    computer[0].classList.add("paper")
+    computer["rock"].classList.remove("computerDisplay")
+    computer["rock"].classList.add("computerDisplayNone")
+    computer["scissors"].classList.remove("computerDisplay")
+    computer["scissors"].classList.add("computerDisplayNone")
+    computer["paper"].classList.remove("computerDisplayNone")
+    computer["paper"].classList.add("computerDisplay")
+    return computer["paper"]
   } else
     //rock
     if (randomNumber === 1) {
-      computer[0].classList.remove("paper")
-      computer[0].classList.add("paper-none")
-      computer[2].classList.remove("scissors")
-      computer[2].classList.add("scissors-none")
-      computer[1].classList.remove("rock-none")
-      computer[1].classList.add("rock")
+      computer["paper"].classList.remove("computerDisplay")
+      computer["paper"].classList.add("computerDisplayNone")
+      computer["scissors"].classList.remove("computerDisplay")
+      computer["scissors"].classList.add("computerDisplayNone")
+      computer["rock"].classList.remove("computerDisplayNone")
+      computer["rock"].classList.add("computerDisplay")
+      return computer["rock"]
     } else
       //scissors
       if (randomNumber === 2) {
-        computer[0].classList.remove("paper")
-        computer[0].classList.add("paper-none")
-        computer[1].classList.remove("rock")
-        computer[1].classList.add("rock-none")
-        computer[2].classList.remove("scissors-none")
-        computer[2].classList.add("scissors")
+        computer["paper"].classList.remove("computerDisplay")
+        computer["paper"].classList.add("computerDisplayNone")
+        computer["rock"].classList.remove("computerDisplay")
+        computer["rock"].classList.add("computerDisplayNone")
+        computer["scissors"].classList.remove("computerDisplayNone")
+        computer["scissors"].classList.add("computerDisplay")
+        return computer["scissors"]
       }
 }
 
 
 
+function chooseWinner(playerOption, computerOption) {
+  // 0 = paper
+  // 1 = rock
+  // 2 = scissors
+
+
+  // Check draw
+  if (computerOption === computer["paper"] && playerOption === player["paper"] ||
+    computerOption === computer["rock"] && playerOption === player["rock"] ||
+    computerOption === computer["scissors"] && playerOption === player["scissors"]) {
+    addDrawScore()
+  } else
+
+    // Player paper
+    if (playerOption === player["paper"]) {
+
+      if (computerOption === computer["rock"]) {
+        addPlayerScore()
+      }
+
+      if (computerOption === computer["scissors"]) {
+        addComputerScore()
+      }
+    }
+
+  // Player rock
+  if (playerOption === player["rock"]) {
+
+    if (computerOption === computer["paper"]) {
+      addComputerScore()
+    }
+
+    if (computerOption === computer["scissors"]) {
+      addPlayerScore()
+    }
+  }
+
+  // Player scissors
+  if (playerOption === player["scissors"]) {
+
+    if (computerOption === computer["paper"]) {
+      addPlayerScore()
+    }
+
+    if (computerOption === computer["rock"]) {
+      addComputerScore()
+    }
+  }
+}
+
 
 function getRandom0To2() {
   return Math.floor(Math.random() * 3);
+}
+
+function addPlayerScore() {
+  playerScoreNum++
+  scoreBoardPlayer.textContent = playerScoreNum
+  playerScore.appendChild(scoreBoardPlayer)
+  localStorage.setItem("playerScore", JSON.stringify(playerScoreNum))
+  new Audio(`audio/playerScore.mp3`).play()
+}
+
+function addComputerScore() {
+  computerScoreNum++
+  scoreBoardComputer.textContent = computerScoreNum
+  computerScore.appendChild(scoreBoardComputer)
+  localStorage.setItem("computerScore", JSON.stringify(computerScoreNum))
+  new Audio(`audio/computerScore.mp3`).play()
+}
+
+function addDrawScore() {
+  drawScoreNum++
+  scoreBoardDraw.textContent = drawScoreNum
+  drawScore.appendChild(scoreBoardDraw)
+  localStorage.setItem("drawScore", JSON.stringify(drawScoreNum))
+  new Audio(`audio/draw.mp3`).play()
 }

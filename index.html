@@ -15,19 +15,41 @@
     <main>
         <div id="container">
 
-            <div class="header"></div>
-            <div class="player-side-text"><h2>Your choose:</h2></div>
+            <div class="header">
+                <h1>ROCK-PAPER-SCISSORS</h1>
+            </div>
+            <div class="player-side-text">
+                <h2>Your choose:</h2>
+            </div>
             <div class="player-side">
                 <img src="img/paper.png" alt="">
                 <img src="img/rock.png" alt="">
                 <img src="img/scissors.png" alt="">
             </div>
-            <div class="menu"></div>
-            <div class="computer-side-text"><h2>Computer:</h2></div>
+            <div class="menu-text">
+                <h2>Counter:</h2>
+            </div>
+            <div class="menu">
+                <div class="player-score">
+                    <h3>Player score:&nbsp;&nbsp;</h3><br>
+                </div>
+                <div class="draw">
+                    <h3>Draw: &nbsp;&nbsp;</h3><br>
+                </div>
+                <div class="computer-score">
+                    <h3>Computer score: &nbsp;&nbsp;</h3><br>
+                </div>
+                <!-- <div class="newGame">NEW GAME</div> -->
+                <button class="newGame">NEW GAME</button>
+                <button class="resetCalc">RESET</button>
+            </div>
+            <div class="computer-side-text">
+                <h2>Computer:</h2>
+            </div>
             <div class="computer-side">
-                <img src="img/paper.png" alt="" class="paper">
-                <img src="img/rock.png" alt="" class="rock-none">
-                <img src="img/scissors.png" alt="" class="scissors-none">
+                <img src="img/paper.png" alt="">
+                <img src="img/rock.png" alt="">
+                <img src="img/scissors.png" alt="">
             </div>
             <div class="footer"></div>
 
@@ -41,9 +63,8 @@
 
 
 
-
-    <script src="script.js"></script>
     <script src="functions.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
