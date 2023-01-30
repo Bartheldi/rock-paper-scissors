@@ -32,6 +32,7 @@ function shuffleOptions() {
       computer["scissors"].classList.add("computerDisplayNone")
       computer["paper"].classList.remove("computerDisplayNone")
       computer["paper"].classList.add("computerDisplay")
+      new Audio(`audio/shuffle.mp3`).play()
     }, 150)
 
 
@@ -43,6 +44,7 @@ function shuffleOptions() {
       computer["scissors"].classList.add("computerDisplayNone")
       computer["rock"].classList.remove("computerDisplayNone")
       computer["rock"].classList.add("computerDisplay")
+      new Audio(`audio/shuffle.mp3`).play()
     }, 300)
 
     //scissors
@@ -53,6 +55,7 @@ function shuffleOptions() {
       computer["rock"].classList.add("computerDisplayNone")
       computer["scissors"].classList.remove("computerDisplayNone")
       computer["scissors"].classList.add("computerDisplay")
+      new Audio(`audio/shuffle.mp3`).play()
     }, 450)
 
     endShuffle++
@@ -153,7 +156,7 @@ function chooseWinner(playerOption, computerOption) {
 
 
 function getRandom0To2() {
-  return Math.floor(Math.random() * 3);
+  return Math.floor(Math.random() * 3)
 }
 
 function addPlayerScore() {

@@ -1,0 +1,78 @@
+@keyframes playerOptionNone {
+    0% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+@keyframes playerOptionMove {
+    0% {
+        opacity: 1;
+        border: 5px solid rgb(55, 130, 236);
+    }
+
+    25% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes resetCalcBorder {
+    0% {
+        border: 0;
+    }
+
+    50% {
+        border: 5px solid rgb(55, 130, 236);
+    }
+
+    100% {
+        border: 0;
+    }
+}
+
+
+@keyframes buttons {
+    0% {
+        color: black;
+    }
+
+    50% {
+        color: #fff;
+        font-size: 18px;
+    }
+
+
+    100% {
+        color: #fff;
+        font-size: 16px;
+    }
+}

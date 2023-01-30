@@ -2,7 +2,7 @@ let playerSide = document.querySelector(".player-side")
 let computerSide = document.querySelector(".computer-side")
 let playerScore = document.querySelector(".player-score")
 let computerScore = document.querySelector(".computer-score")
-let drawScore = document.querySelector(".draw")
+let drawScore = document.querySelector(".draw-score")
 let newGame = document.querySelector(".newGame")
 let resetCalc = document.querySelector(".resetCalc")
 
@@ -20,6 +20,7 @@ computer["scissors"] = computerSide.children[2]
 computer["rock"].classList.add("computerDisplayNone")
 computer["scissors"].classList.add("computerDisplayNone")
 newGame.style.display = "none"
+resetCalc.style.display = "none"
 
 let goThrow = false
 let computerChoose
@@ -83,6 +84,7 @@ player["paper"].addEventListener("click", function (e) {
             computerChoose = computerWinOption()
             chooseWinner(player["paper"], computerChoose)
             newGame.style.display = ""
+            resetCalc.style.display = ""
         }, 10000)
 
 
@@ -110,6 +112,7 @@ player["rock"].addEventListener("click", function (e) {
             computerChoose = computerWinOption()
             chooseWinner(player["rock"], computerChoose)
             newGame.style.display = ""
+            resetCalc.style.display = ""
         }, 10000)
 
 
@@ -136,6 +139,7 @@ player["scissors"].addEventListener("click", function (e) {
             computerChoose = computerWinOption()
             chooseWinner(player["scissors"], computerChoose)
             newGame.style.display = ""
+            resetCalc.style.display = ""
         }, 10000)
 
 
@@ -145,6 +149,7 @@ player["scissors"].addEventListener("click", function (e) {
 
 
 newGame.addEventListener("click", function () {
+    newGame.style.border = "3px solid  rgb(55, 130, 236)"
     new Audio(`audio/newGame.mp3`).play()
     setTimeout(() => {
         location.reload()
@@ -161,15 +166,23 @@ resetCalc.addEventListener("click", function () {
         alert("All counters are at 0")
 
     } else {
+        resetCalc.classList.add("resetCalcBorder")
         alert("Are you sure you want to delete points?")
+
+        scoreBoardPlayer.textContent = 0
+        scoreBoardComputer.textContent = 0
+        scoreBoardDraw.textContent = 0
+
+        playerScore.appendChild(scoreBoardPlayer)
+        computerScore.appendChild(scoreBoardComputer)
+        drawScore.appendChild(scoreBoardDraw)
+
         localStorage.setItem("computerScore", JSON.stringify(0))
         localStorage.setItem("playerScore", JSON.stringify(0))
         localStorage.setItem("drawScore", JSON.stringify(0))
+
         new Audio(`audio/reset.mp3`).play()
 
-        setTimeout(() => {
-            location.reload()
-        }, 1000)
     }
 
 
