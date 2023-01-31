@@ -166,7 +166,7 @@ resetCalc.addEventListener("click", function () {
         alert("All counters are at 0")
 
     } else {
-        resetCalc.classList.add("resetCalcBorder")
+
         alert("Are you sure you want to delete points?")
 
         scoreBoardPlayer.textContent = 0
@@ -182,6 +182,7 @@ resetCalc.addEventListener("click", function () {
         localStorage.setItem("drawScore", JSON.stringify(0))
 
         new Audio(`audio/reset.mp3`).play()
+        resetCalc.classList.add("resetCalcBorder")
 
     }
 

@@ -1,0 +1,214 @@
+@media only screen and (max-width: 1300px) {
+
+    .menu .player-text {
+        margin-left: 0;
+    }
+
+    .menu .draw-text {
+        margin-left: 0;
+    }
+
+    .menu .computer-text {
+        margin-left: 0;
+    }
+
+}
+
+@media only screen and (max-width: 1060px) {
+
+    .menu .newGame {
+        width: 50%;
+    }
+
+    .menu .resetCalc {
+        width: 50%;
+        right: 43%;
+    }
+
+}
+
+@media only screen and (max-width: 960px) {
+
+    .menu .newGame {
+        width: 65%;
+    }
+
+    .menu .resetCalc {
+        width: 65%;
+        right: 5%;
+        top: 55%;
+    }
+
+}
+
+@media only screen and (max-width: 850px) {
+
+    #container {
+        grid-template-rows: 100px 50px 300px 220px;
+        grid-template-columns: 55.2% 0% 44.2%;
+    }
+
+    .player-side img {
+        height: 200px;
+    }
+
+    .computer-side img {
+        height: 90%;
+    }
+
+    .menu {
+        grid-area: footer;
+        width: 30%;
+        margin-left: 15%;
+    }
+
+    .menu-text {
+        display: none;
+    }
+
+    .menu .newGame {
+        width: 50%;
+        left: 181%;
+        top: -76%;
+    }
+
+    .menu .resetCalc {
+        width: 50%;
+        right: -91%;
+        top: -38%;
+    }
+
+}
+
+@media only screen and (max-width: 640px) {
+
+    #container {
+        grid-template-rows: 50px 30px 300px 220px;
+    }
+
+    .menu .newGame {
+        width: 65%;
+        left: 181%;
+        top: -76%;
+    }
+
+    .menu .resetCalc {
+        width: 65%;
+        right: -128%;
+        top: -76%;
+    }
+
+}
+
+@media only screen and (max-width: 500px) {
+
+    #container {
+        grid-template-rows: 50px 30px 300px 220px;
+    }
+
+    .menu .newGame {
+        width: 80%;
+        left: 176%;
+        top: -76%;
+    }
+
+    .menu .resetCalc {
+        width: 80%;
+        right: -115%;
+        top: -76%;
+    }
+
+}
+
+@media only screen and (max-width: 420px) {
+
+    #container {
+        grid-template-rows: 50px 30px 300px 220px;
+    }
+
+    .header h1 {
+        font-size: 24px;
+    }
+
+    .computer-side-text {
+        margin-right: 20%;
+    }
+
+    .menu {
+        margin-left: 25px;
+    }
+
+    .menu .newGame {
+        width: 95%;
+        left: 182%;
+        top: -76%;
+    }
+
+    .menu .resetCalc {
+        width: 95%;
+        right: -115%;
+        top: -76%;
+    }
+
+    .menu .player-text {
+        flex: 1 1 50%;
+    }
+
+    .menu .draw-text {
+        flex: 1 1 50%;
+    }
+
+    .menu .computer-text {
+        flex: 1 1 50%;
+    }
+
+}
+
+@media only screen and (max-width: 340px) {
+
+    #container {
+        grid-template-rows: 50px 30px 300px 220px;
+    }
+
+
+    .menu {
+        margin-left: 25px;
+    }
+
+
+    .menu .newGame {
+        width: 100%;
+        left: 180%;
+        top: -76%;
+    }
+
+
+    .menu .resetCalc {
+        width: 100%;
+        right: -115%;
+        top: -76%;
+    }
+
+    .computer-side-text {
+        margin-right: 20%;
+    }
+
+    @keyframes counter {
+        0% {
+            font-size: 2em;
+            font-weight: bolder;
+        }
+
+        100% {
+            font-size: 2em;
+            font-weight: bolder;
+        }
+    }
+
+}
+
+@media only screen and (max-width: 280px) {
+    #container {
+        display: none;
+    }
+}

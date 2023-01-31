@@ -1,21 +1,39 @@
 function clicked(element, elementDel1, elementDel2) {
-
   new Audio(`audio/click.wav`).play()
+  let maxMedia850 = window.matchMedia("(max-width: 850px)")
 
-  setTimeout(() => {
-    elementDel1.remove()
-    elementDel2.remove()
-  }, 2000)
+  if (maxMedia850.matches) {
+    setTimeout(() => {
+      elementDel1.remove()
+      elementDel2.remove()
+    }, 2000)
 
-  setTimeout(() => {
-    element.style.width = "50%"
-    element.style.height = "60%"
-    element.style.transition = "height 1s, width 1s"
-  }, 2500)
+    setTimeout(() => {
+      element.style.width = "40%"
+      element.style.height = "90%"
+      element.style.transition = "height 1s, width 1s"
+    }, 2500)
 
-  setTimeout(() => {
-    element.style.border = "0"
-  }, 4000)
+    setTimeout(() => {
+      element.style.border = "0"
+    }, 4000)
+  } else {
+    setTimeout(() => {
+      elementDel1.remove()
+      elementDel2.remove()
+    }, 2000)
+
+    setTimeout(() => {
+      element.style.width = "50%"
+      element.style.height = "60%"
+      element.style.transition = "height 1s, width 1s"
+    }, 2500)
+
+    setTimeout(() => {
+      element.style.border = "0"
+    }, 4000)
+  }
+
 }
 
 
@@ -109,7 +127,6 @@ function chooseWinner(playerOption, computerOption) {
   // 1 = rock
   // 2 = scissors
 
-
   // Check draw
   if (computerOption === computer["paper"] && playerOption === player["paper"] ||
     computerOption === computer["rock"] && playerOption === player["rock"] ||
@@ -122,10 +139,13 @@ function chooseWinner(playerOption, computerOption) {
 
       if (computerOption === computer["rock"]) {
         addPlayerScore()
+        player["paper"].classList.remove("playerOptionMove")
+        player["paper"].classList.add("winRotation")
       }
 
       if (computerOption === computer["scissors"]) {
         addComputerScore()
+        computer["scissors"].classList.add("winRotation")
       }
     }
 
@@ -134,10 +154,13 @@ function chooseWinner(playerOption, computerOption) {
 
     if (computerOption === computer["paper"]) {
       addComputerScore()
+      computer["paper"].classList.add("winRotation")
     }
 
     if (computerOption === computer["scissors"]) {
       addPlayerScore()
+      player["rock"].classList.remove("playerOptionMove")
+      player["rock"].classList.add("winRotation")
     }
   }
 
@@ -146,10 +169,13 @@ function chooseWinner(playerOption, computerOption) {
 
     if (computerOption === computer["paper"]) {
       addPlayerScore()
+      player["scissors"].classList.remove("playerOptionMove")
+      player["scissors"].classList.add("winRotation")
     }
 
     if (computerOption === computer["rock"]) {
       addComputerScore()
+      computer["rock"].classList.add("winRotation")
     }
   }
 }
@@ -162,7 +188,7 @@ function getRandom0To2() {
 function addPlayerScore() {
   playerScoreNum++
   scoreBoardPlayer.textContent = playerScoreNum
-  playerScore.appendChild(scoreBoardPlayer)
+  playerScore.appendChild(scoreBoardPlayer).classList.add("counterAnimation")
   localStorage.setItem("playerScore", JSON.stringify(playerScoreNum))
   new Audio(`audio/playerScore.mp3`).play()
 }
@@ -170,7 +196,7 @@ function addPlayerScore() {
 function addComputerScore() {
   computerScoreNum++
   scoreBoardComputer.textContent = computerScoreNum
-  computerScore.appendChild(scoreBoardComputer)
+  computerScore.appendChild(scoreBoardComputer).classList.add("counterAnimation")
   localStorage.setItem("computerScore", JSON.stringify(computerScoreNum))
   new Audio(`audio/computerScore.mp3`).play()
 }
@@ -178,7 +204,7 @@ function addComputerScore() {
 function addDrawScore() {
   drawScoreNum++
   scoreBoardDraw.textContent = drawScoreNum
-  drawScore.appendChild(scoreBoardDraw)
+  drawScore.appendChild(scoreBoardDraw).classList.add("counterAnimation")
   localStorage.setItem("drawScore", JSON.stringify(drawScoreNum))
   new Audio(`audio/draw.mp3`).play()
 }
