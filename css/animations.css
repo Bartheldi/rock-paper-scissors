@@ -50,8 +50,16 @@
         border: 0;
     }
 
+    28% {
+        border: 3px solid rgb(55, 130, 236);
+    }
+
     50% {
         border: 5px solid rgb(55, 130, 236);
+    }
+
+    75% {
+        border: 3px solid rgb(55, 130, 236);
     }
 
     100% {

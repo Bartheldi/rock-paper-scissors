@@ -12,44 +12,55 @@
         margin-left: 0;
     }
 
+    .menu .newGame {
+        width: 60%;
+    }
+
+    .menu .resetCalc {
+        width: 60%;
+        right: 0%;
+        top: 56%;
+    }
 }
+
 
 @media only screen and (max-width: 1060px) {
 
     .menu .newGame {
-        width: 50%;
+        width: 60%;
     }
 
     .menu .resetCalc {
-        width: 50%;
-        right: 43%;
+        width: 60%;
+        right: 0%;
+        top: 56%;
     }
-
 }
+
 
 @media only screen and (max-width: 960px) {
 
     .menu .newGame {
-        width: 65%;
+        width: 70%;
     }
 
     .menu .resetCalc {
-        width: 65%;
+        width: 70%;
         right: 5%;
         top: 55%;
     }
-
 }
+
 
 @media only screen and (max-width: 850px) {
 
     #container {
-        grid-template-rows: 100px 50px 300px 220px;
+        grid-template-rows: 100px 30px 300px 220px;
         grid-template-columns: 55.2% 0% 44.2%;
     }
 
     .player-side img {
-        height: 200px;
+        height: 70%;
     }
 
     .computer-side img {
@@ -67,18 +78,18 @@
     }
 
     .menu .newGame {
-        width: 50%;
+        width: 60%;
         left: 181%;
         top: -76%;
     }
 
     .menu .resetCalc {
-        width: 50%;
-        right: -91%;
-        top: -38%;
+        width: 60%;
+        right: -134%;
+        top: -76%;
     }
-
 }
+
 
 @media only screen and (max-width: 640px) {
 
@@ -87,43 +98,51 @@
     }
 
     .menu .newGame {
-        width: 65%;
+        width: 70%;
         left: 181%;
         top: -76%;
     }
 
     .menu .resetCalc {
-        width: 65%;
+        width: 70%;
         right: -128%;
         top: -76%;
     }
-
 }
+
 
 @media only screen and (max-width: 500px) {
 
     #container {
-        grid-template-rows: 50px 30px 300px 220px;
+        grid-template-rows: 50px 30px 200px 220px;
     }
 
     .menu .newGame {
-        width: 80%;
+        width: 90%;
         left: 176%;
         top: -76%;
     }
 
     .menu .resetCalc {
-        width: 80%;
+        width: 90%;
         right: -115%;
         top: -76%;
     }
 
+    .player-side img {
+        height: 50%;
+    }
+
+    .computer-side img {
+        height: 70%;
+    }
 }
+
 
 @media only screen and (max-width: 420px) {
 
     #container {
-        grid-template-rows: 50px 30px 300px 220px;
+        grid-template-rows: 50px 30px 200px 220px;
     }
 
     .header h1 {
@@ -161,15 +180,38 @@
     .menu .computer-text {
         flex: 1 1 50%;
     }
-
 }
+
 
 @media only screen and (max-width: 340px) {
 
     #container {
-        grid-template-rows: 50px 30px 300px 220px;
+        grid-template-rows: 50px 30px 200px 220px;
     }
 
+    .header h1 {
+        font-size: 20px;
+    }
+
+    .player-side-text h2 {
+        font-size: 18px;
+    }
+
+    .computer-side-text h2 {
+        font-size: 18px;
+    }
+
+    .player-text h3 {
+        font-size: 16px;
+    }
+
+    .draw-text h3 {
+        font-size: 16px;
+    }
+
+    .computer-text h3 {
+        font-size: 16px;
+    }
 
     .menu {
         margin-left: 25px;
@@ -189,9 +231,23 @@
         top: -76%;
     }
 
+
+    .player-side img {
+        height: 50%;
+    }
+
+    .computer-side img {
+        height: 70%;
+    }
+
     .computer-side-text {
         margin-right: 20%;
     }
+
+    .computer-side img {
+        margin-right: 10%;
+    }
+
 
     @keyframes counter {
         0% {
@@ -204,8 +260,8 @@
             font-weight: bolder;
         }
     }
-
 }
+
 
 @media only screen and (max-width: 280px) {
     #container {

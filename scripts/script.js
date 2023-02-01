@@ -86,9 +86,6 @@ player["paper"].addEventListener("click", function (e) {
             newGame.style.display = ""
             resetCalc.style.display = ""
         }, 10000)
-
-
-
     }
     goThrow = true
 })
@@ -114,8 +111,6 @@ player["rock"].addEventListener("click", function (e) {
             newGame.style.display = ""
             resetCalc.style.display = ""
         }, 10000)
-
-
     }
     goThrow = true
 })
@@ -141,14 +136,13 @@ player["scissors"].addEventListener("click", function (e) {
             newGame.style.display = ""
             resetCalc.style.display = ""
         }, 10000)
-
-
     }
     goThrow = true
 })
 
 
 newGame.addEventListener("click", function () {
+    newGame.style.zIndex = "500"
     newGame.style.border = "3px solid  rgb(55, 130, 236)"
     new Audio(`audio/newGame.mp3`).play()
     setTimeout(() => {
@@ -159,6 +153,8 @@ newGame.addEventListener("click", function () {
 
 resetCalc.addEventListener("click", function () {
 
+    resetCalc.classList.add("resetCalcBorder")
+
     if (JSON.parse(localStorage.getItem("playerScore") == 0) &&
         JSON.parse(localStorage.getItem("computerScore") == 0) &&
         JSON.parse(localStorage.getItem("drawScore") == 0)) {
@@ -166,8 +162,6 @@ resetCalc.addEventListener("click", function () {
         alert("All counters are at 0")
 
     } else {
-
-        alert("Are you sure you want to delete points?")
 
         scoreBoardPlayer.textContent = 0
         scoreBoardComputer.textContent = 0
@@ -182,9 +176,5 @@ resetCalc.addEventListener("click", function () {
         localStorage.setItem("drawScore", JSON.stringify(0))
 
         new Audio(`audio/reset.mp3`).play()
-        resetCalc.classList.add("resetCalcBorder")
-
     }
-
-
 })
