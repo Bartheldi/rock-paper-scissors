@@ -1,189 +1,136 @@
-function clicked(element, elementDel1, elementDel2) {
+function playerChoice(option) {
+  if (goThrow === false) {
+    const options = [player["paper"], player["rock"], player["scissors"]];
+    options.forEach(el => el.classList.add("playerOptionNone"));
 
-  new Audio(`audio/click.wav`).play()
-  let maxMedia850 = window.matchMedia("(max-width: 850px)")
-  let maxMedia500 = window.matchMedia("(max-width: 500px)")
-  let maxMedia340 = window.matchMedia("(max-width: 340px)")
-
-  setTimeout(() => {
-    elementDel1.remove()
-    elementDel2.remove()
-  }, 2000)
-
-  setTimeout(() => {
-    element.style.border = "0"
-  }, 4000)
-
-  if (maxMedia850.matches === true && maxMedia500.matches === false && maxMedia340.matches === false) { //850
     setTimeout(() => {
-      element.style.width = "40%"
-      element.style.height = "90%"
-      element.style.transition = "height 1s, width 1s"
-    }, 2500)
+      shuffleOptions();
+    }, 4000);
 
-  } else
+    option.classList.remove("playerOptionNone");
+    option.classList.add("playerOptionMove");
 
-  if (maxMedia850.matches === true && maxMedia500.matches === true && maxMedia340.matches === false) { //500
+    clicked(option, ...options.filter(el => el !== option));
+
     setTimeout(() => {
-      element.style.width = "40%"
-      element.style.height = "70%"
-      element.style.transition = "height 1s, width 1s"
-    }, 2500)
-  } else
-
-  if (maxMedia850.matches === true && maxMedia500.matches === true && maxMedia340.matches === true) { //340
-    setTimeout(() => {
-      element.style.width = "40%"
-      element.style.height = "70%"
-      element.style.transition = "height 1s, width 1s"
-    }, 2500)
-  } else {
-    setTimeout(() => {
-      element.style.width = "50%"
-      element.style.height = "60%"
-      element.style.transition = "height 1s, width 1s"
-    }, 2500)
-
+      computerChoose = computerWinOption();
+      chooseWinner(option, computerChoose);
+      newGame.style.display = "";
+      resetCalc.style.display = "";
+    }, 10000);
   }
+  goThrow = true;
 }
+
+
+
+
+
+function clicked(element, elementDel1, elementDel2) {
+  new Audio(`audio/click.wav`).play();
+
+  setTimeout(() => {
+    elementDel1.remove();
+    elementDel2.remove();
+  }, 2000);
+
+  setTimeout(() => {
+    element.style.border = "0";
+    setElementStyles(element);
+  }, 4000);
+}
+
+function setElementStyles(element) {
+  let maxMedia850 = window.matchMedia("(max-width: 850px)");
+  let maxMedia500 = window.matchMedia("(max-width: 500px)");
+  let maxMedia340 = window.matchMedia("(max-width: 340px)");
+
+  let width, height;
+  if (maxMedia850.matches === true && maxMedia500.matches === true && maxMedia340.matches === true) { // 340
+    width = "40%";
+    height = "70%";
+  } else if (maxMedia850.matches === true && maxMedia500.matches === true && maxMedia340.matches === false) { // 500
+    width = "40%";
+    height = "70%";
+  } else if (maxMedia850.matches === true && maxMedia500.matches === false && maxMedia340.matches === false) { // 850
+    width = "40%";
+    height = "90%";
+  } else {
+    width = "50%";
+    height = "60%";
+  }
+
+  element.style.width = width;
+  element.style.height = height;
+  element.style.transition = "height 1s, width 1s";
+}
+
 
 
 function shuffleOptions() {
+  const options = ["rock", "paper", "scissors"];
 
   if (endShuffle < 10) {
+    options.forEach((option, i) => {
+      setTimeout(() => {
+        Object.values(computer).forEach((el) => el.classList.add("computerDisplayNone"));
+        computer[option].classList.remove("computerDisplayNone");
+        new Audio(`audio/shuffle.mp3`).play();
+      }, i * 150);
+    });
 
-    //paper
-    setTimeout(() => {
-      computer["rock"].classList.remove("computerDisplay")
-      computer["rock"].classList.add("computerDisplayNone")
-      computer["scissors"].classList.remove("computerDisplay")
-      computer["scissors"].classList.add("computerDisplayNone")
-      computer["paper"].classList.remove("computerDisplayNone")
-      computer["paper"].classList.add("computerDisplay")
-      new Audio(`audio/shuffle.mp3`).play()
-    }, 150)
-
-
-    // rock
-    setTimeout(() => {
-      computer["paper"].classList.remove("computerDisplay")
-      computer["paper"].classList.add("computerDisplayNone")
-      computer["scissors"].classList.remove("computerDisplay")
-      computer["scissors"].classList.add("computerDisplayNone")
-      computer["rock"].classList.remove("computerDisplayNone")
-      computer["rock"].classList.add("computerDisplay")
-      new Audio(`audio/shuffle.mp3`).play()
-    }, 300)
-
-    //scissors
-    setTimeout(() => {
-      computer["paper"].classList.remove("computerDisplay")
-      computer["paper"].classList.add("computerDisplayNone")
-      computer["rock"].classList.remove("computerDisplay")
-      computer["rock"].classList.add("computerDisplayNone")
-      computer["scissors"].classList.remove("computerDisplayNone")
-      computer["scissors"].classList.add("computerDisplay")
-      new Audio(`audio/shuffle.mp3`).play()
-    }, 450)
-
-    endShuffle++
-    setTimeout(shuffleOptions, 600)
+    endShuffle++;
+    setTimeout(shuffleOptions, 600);
   }
 }
+
 
 
 function computerWinOption() {
-  let randomNumber
-  randomNumber = getRandom0To2()
-
-  //paper
-  if (randomNumber === 0) {
-    computer["rock"].classList.remove("computerDisplay")
-    computer["rock"].classList.add("computerDisplayNone")
-    computer["scissors"].classList.remove("computerDisplay")
-    computer["scissors"].classList.add("computerDisplayNone")
-    computer["paper"].classList.remove("computerDisplayNone")
-    computer["paper"].classList.add("computerDisplay")
-    return computer["paper"]
-  } else
-    //rock
-    if (randomNumber === 1) {
-      computer["paper"].classList.remove("computerDisplay")
-      computer["paper"].classList.add("computerDisplayNone")
-      computer["scissors"].classList.remove("computerDisplay")
-      computer["scissors"].classList.add("computerDisplayNone")
-      computer["rock"].classList.remove("computerDisplayNone")
-      computer["rock"].classList.add("computerDisplay")
-      return computer["rock"]
-    } else
-      //scissors
-      if (randomNumber === 2) {
-        computer["paper"].classList.remove("computerDisplay")
-        computer["paper"].classList.add("computerDisplayNone")
-        computer["rock"].classList.remove("computerDisplay")
-        computer["rock"].classList.add("computerDisplayNone")
-        computer["scissors"].classList.remove("computerDisplayNone")
-        computer["scissors"].classList.add("computerDisplay")
-        return computer["scissors"]
-      }
+  let options = ["rock", "paper", "scissors"];
+  let randomNumber = getRandom0To2();
+  let computerOption = computer[options[randomNumber]];
+  options.forEach(option => {
+    computer[option].classList.remove("computerDisplay");
+    computer[option].classList.add("computerDisplayNone");
+  });
+  computerOption.classList.remove("computerDisplayNone");
+  computerOption.classList.add("computerDisplay");
+  return computerOption;
 }
+
 
 
 function chooseWinner(playerOption, computerOption) {
-
-  // Check draw
-  if (computerOption === computer["paper"] && playerOption === player["paper"] ||
-    computerOption === computer["rock"] && playerOption === player["rock"] ||
-    computerOption === computer["scissors"] && playerOption === player["scissors"]) {
-    addDrawScore()
-  } else
-
-    // Player paper
-    if (playerOption === player["paper"]) {
-
-      if (computerOption === computer["rock"]) {
-        addPlayerScore()
-        player["paper"].classList.remove("playerOptionMove")
-        player["paper"].classList.add("winRotation")
-      }
-
-      if (computerOption === computer["scissors"]) {
-        addComputerScore()
-        computer["scissors"].classList.add("winRotation")
-      }
-    }
-
-  // Player rock
-  if (playerOption === player["rock"]) {
-
-    if (computerOption === computer["paper"]) {
-      addComputerScore()
-      computer["paper"].classList.add("winRotation")
-    }
-
-    if (computerOption === computer["scissors"]) {
-      addPlayerScore()
-      player["rock"].classList.remove("playerOptionMove")
-      player["rock"].classList.add("winRotation")
+  let isDraw = computerOption === playerOption;
+  let isPlayerWin = false;
+  
+  if (!isDraw) {
+    switch(playerOption) {
+      case player["paper"]:
+        isPlayerWin = computerOption === computer["rock"];
+        break;
+      case player["rock"]:
+        isPlayerWin = computerOption === computer["scissors"];
+        break;
+      case player["scissors"]:
+        isPlayerWin = computerOption === computer["paper"];
+        break;
     }
   }
-
-
-  // Player scissors
-  if (playerOption === player["scissors"]) {
-
-    if (computerOption === computer["paper"]) {
-      addPlayerScore()
-      player["scissors"].classList.remove("playerOptionMove")
-      player["scissors"].classList.add("winRotation")
-    }
-
-    if (computerOption === computer["rock"]) {
-      addComputerScore()
-      computer["rock"].classList.add("winRotation")
-    }
+  
+  if (isDraw) {
+    addDrawScore();
+  } else if (isPlayerWin) {
+    addPlayerScore();
+    playerOption.classList.remove("playerOptionMove");
+    playerOption.classList.add("winRotation");
+  } else {
+    addComputerScore();
+    computerOption.classList.add("winRotation");
   }
 }
+
 
 
 function getRandom0To2() {
